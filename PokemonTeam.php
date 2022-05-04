@@ -12,7 +12,8 @@
         array_push($PokemonListado, ltrim(date("m", $Fecha),'0'));
         array_push($PokemonListado, ltrim(date("d", $Fecha),'0'));
         array_push($PokemonListado, ltrim(date("y", $Fecha),'0'));
-        
+        if($PokemonListado[2]=='')$PokemonListado[2]='10228';
+
         $W=96*3;
         $H=110;
         $Px=0;
@@ -52,7 +53,7 @@
         $ArchivoTemporal=ob_get_clean();
         ImageDestroy($imgBase);
         ob_end_clean();
-        if(!isset($_REQUEST['Imagen'])){
+        if(!isset($_REQUEST['imagen'])){
             echo '<img src="';
             echo 'data:image/png;base64,'.base64_encode($ArchivoTemporal);
             echo '" >';
@@ -63,12 +64,16 @@
     }else{
 ?>
 <!DOCTYPE html>
-<html lang="">
+<html lang="" prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Equipo Pok&eacute;mon</title>
+	<meta property="og:title" content="Equipo Pok&eacute;mon" />
+    	<meta property="og:type" content="website" />
+    	<meta property="og:url" content="http://pokemon.enquegastar.com" />
+	<meta property="og:image" content="http://pokemon.enquegastar.com/?FechaNacimiento=2004-07-25&imagen=1" />
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
